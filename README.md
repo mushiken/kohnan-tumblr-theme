@@ -9,4 +9,4 @@ Tumblr Theme Kohnan
 * save
 
 ## Changelog
-### 2014/05/19 ver_1.0
+2014/05/19 ver_1.0
