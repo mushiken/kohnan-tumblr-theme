@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="no-js ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="{block:English}en{/block:English}{block:French}fr{/block:French}{block:German}de{/block:German}{block:Japanese}ja{/block:Japanese}{block:Italian}it{/block:Italian}{block:Spanish}es{/block:Spanish}{block:Polish}pl{/block:Polish}">
+<!--
+=======================================================================
+
+	Theme  : kohnan
+	Author : @takeshi_du
+	Web Site : http://designup.jp
+	Copyright : 2014 Takeshi Sugimori
+	Lisence : under the MIT license.
+						Please leave at least ONE credit link. Do not delete this box.
+
+=======================================================================
+-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="author" content="{PostAuthorName}">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<title>
+	{Title}
+	{block:IndexPage}{block:Description} &ndash; {PlaintextDescription}{/block:Description}{/block:IndexPage}
+	{block:PermalinkPage}{block:PostSummary} &ndash; {PlaintextPostSummary}{/block:PostSummary}{block:PermalinkPage}
+	{block:SearchPage} &ndash; {lang:Search results for SearchQuery}{/block:SearchPage}
+	</title>
+
+	{block:Description}
+	<meta name="description" content="{MetaDescription}">
+	{/block:Description}
+
+	{block:PermalinkPage}
+	{block:Posts}
+	{block:Date}
+	<link rel="canonical" href="{Permalink}">
+	<link rel="shortlink" href="{ShortURL}">
+	{/block:Date}
+	{/block:Posts}
+	{/block:PermalinkPage}
+	
+	<!-- Theme Text Options -->
+	<meta name="text:Tumblr Username" content="">
+
+	<!-- Theme Boolean Options -->
+	<meta name="if:Post Like Button" content="1">
+	<meta name="if:Post Reblog Button" content="1">
+	<meta name="if:Post Time Stamp" content="1">
+	<meta name="if:Post Notes Count" content="1">
+	<meta name="if:Post Tags" content="1">
+	<meta name="if:Show Album Art on Audio Posts" content="1" />
+	<meta name="if:Disable Responsive Layout" content="0" />
+
+	<!-- Font Options -->
+	<meta name="font:Title" content="Arial" />
+	<meta name="font:SideTitle" content="Arial" />
+	<meta name="font:Body" content="Arial" />
+
+	<!-- Theme Color Options -->
+	<meta name="color:Background Color" content="#FFFFFF">
+	<meta name="color:HeaderBackground Color" content="#FF5858">
+	<meta name="color:HeaderTitle Color" content="#FFFFFF">
+	<meta name="color:HeaderLink Color" content="#FFFFFF">
+	<meta name="color:SiteDescription Color" content="#555555">
+	<meta name="color:SidebarTitle Color" content="#333333">
+	<meta name="color:SidebarText Color" content="#bfbfc6">
+	<meta name="color:FooterText Color" content="#FFFFFF">
+	<meta name="color:FooterLink Color" content="#FFFFFF">
+	<meta name="color:PostTitle Color" content="#333333">
+	<meta name="color:Paragraph Color" content="#555555">
+	<meta name="color:QuoteText Color" content="#777777">
+	<meta name="color:Link Color" content="#2a6496">
+	<meta name="color:Divider Color" content="#CCCCCC">
+	<meta name="color:Quote Border Color" content="#cccccc">
+
+	<!-- Theme Image Options -->
+	<meta name="image:Custom Favicon" content="">
+
+	<!-- Fav Icons -->
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon" href="{PortraitURL-128}">
+
+	<!-- RSS Feed -->
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- bootstrap.min.css -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<!-- font awesome -->
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Theme CSS -->
+	<style>
+	/* ------------------------------------- */
+	/*	 Common 	*/
+	/* ------------------------------------- */
+	body{
+		font-family: {font:Body};
+		font-size: 13px;
+		background-color: {color:Background Color};
+	}
+	p{
+		margin-bottom: 20px;
+		color: {color:Paragraph Color};
+	}
+	ul,ol{
+		margin-bottom: 20px;
+	}
+	a{
+		color: {color:Link Color};
+	}
+
+	@media (min-width: 1200px){
+		.container {
+		width: 970px;
+		}
+	}
+	/* ------------------------------------- */
+	/*	 Header 	*/
+	/* ------------------------------------- */
+	#header{
+		padding: 40px 0;
+		text-align: center;
+		background-color: {color:HeaderBackground Color};
+		color: #fff;
+		border-bottom: 3px dashed {color:Background Color};
+	}
+	#header .title{
+		margin: 0;
+	}
+	#header .title a{
+		color: {color:HeaderTitle Color};
+		font-family: {font:Title};
+		font-size: 50px;
+	}
+	#header .title a:hover{
+		text-decoration: none;
+	}
+	#header .feed li a{
+		color: {color:HeaderLink Color};
+	}
+
+	/* ------------------------------------- */
+	/*	 Main 	*/
+	/* ------------------------------------- */
+	#main{
+		padding-top: 40px;
+		border-right: 4px dashed {color:HeaderBackground Color};
+		padding-left: 0;
+		padding-right: 30px;
+	}
+	/* ------------------------------------- */
+	/*	 Posts 	*/
+	/* ------------------------------------- */
+	article{
+		padding: 15px;
+		margin-bottom: 40px;
+		background-color: #fff;
+		border-bottom: 1px solid {color:Divider Color};
+	}
+	article:last-child{
+		border-bottom: none;
+	}
+	article img{
+		max-width: 100%;
+	}
+
+	.post{
+	}
+	.post .title{
+		margin: 0;
+		padding-bottom: 20px;
+		font-size: 32px;
+		color: {color:PostTitle Color};
+	}
+	.post .caption{
+		margin-top: 5px;
+		font-style: italic;
+		font-size: 12px;
+	}
+	.post .caption p{
+		color: #aaa;
+	}
+	.post blockquote{
+		border-left-color: {color:Quote Border Color};
+		font-size: 14px;
+		color: {color:QuoteText Color};
+	}
+	.post.chat .lines .line{
+		margin-bottom: 5px;
+	}
+	
+	.article_footer{
+		padding-top: 10px;
+		margin-top: 10px;
+		border-top: 1px solid {color:Divider Color};
+		color: #aaa;
+		font-size: 13px;
+	}
+	.article_footer ul{
+		margin: 0;
+	}
+	.article_footer a{
+		font-size: 13px;
+	}
+
+	/* ------------------------------------- */
+	/*	 Notes 	*/
+	/* ------------------------------------- */
+	 ol.notes {
+			padding: 0px;
+			margin: 25px 0px;
+			list-style-type: none;
+			border-bottom: solid 1px {color:Divider Color};
+		}
+
+		ol.notes li.note {
+			border-top: dashed 1px {color:Divider Color};
+			padding: 10px;
+		}
+
+		ol.notes li.note img.avatar {
+			vertical-align: -4px;
+			margin-right: 10px;
+			width: 16px;
+			height: 16px;
+		}
+
+		ol.notes li.note span.action {
+			font-weight: bold;
+		}
+
+		ol.notes li.note .answer_content {
+			font-weight: normal;
+		}
+
+		ol.notes li.note blockquote {
+			border-color: {color:Divider Color};
+			padding: 4px 10px;
+			margin: 10px 0px 0px 25px;
+		}
+
+		ol.notes li.note blockquote a {
+			text-decoration: none;
+		}
+
+	/* ------------------------------------- */
+	/*	 Sidebar 	*/
+	/* ------------------------------------- */
+	#side{
+		color: {color:SidebarText Color};
+		padding-top: 40px;
+		padding-left: 30px;
+		padding-right: 0;
+	}
+	#side .avatar img{
+		max-width: 100%;
+		padding: 6px;
+		background-color: #fff;
+		border: 1px solid #ddd;
+	}
+	#side p{
+		margin-top: 10px;
+		font-size: 12px;
+		color: {color:SiteDescription Color};
+	}
+	#side .title{
+		margin: 0;
+		margin-bottom: 20px;
+		font-family: {font:SideTitle};
+		color: {color:SidebarTitle Color};
+		font-size: 18px;
+	}
+
+	#side aside{
+		margin-bottom: 40px;
+	}
+	#side aside ul{
+		margin: 0;
+	}
+
+	#side .pages li{
+		margin-bottom: 16px;
+		padding-bottom: 4px;
+		border-bottom: 1px dashed {color:Divider Color};
+	}
+	#side .pages li a{
+		color: #aaa;
+		font-size: 14px;
+	}
+	#side .pages li a:hover{
+		color: {color:Link Color};
+		text-decoration: none;
+	}
+	#side .pages i.fa {
+		margin-right: 6px;
+	}
+	
+	#side .tags ul{
+		list-style: none;
+		padding: 0;
+	}
+	#side .tags ul li a {
+	padding: 3px 9px;
+	background-color: #777;
+	color: #fff;
+	border-radius: 2px;
+	margin: 4px;
+	display: inline-block;
+	}
+	#side .tags ul li a:hover {
+		background-color: #444;
+		text-decoration: none;
+	}
+
+
+	/* ------------------------------------- */
+	/*	 Footer 	*/
+	/* ------------------------------------- */
+	#footer{
+		padding: 20px 0;
+		background-color: {color:HeaderBackground Color};
+		border-top: 3px dashed {color:Background Color};
+		color: {color:FooterText Color};
+	}
+	#footer a{
+		color: {color:FooterLink Color};
+	}
+	</style>
+
+	{block:IfDisableResponsiveLayout}
+	<style>
+	.container{
+		max-width: none !important;
+		width: 970px;
+	}
+	</style>
+	{/block:IfDisableResponsiveLayout}
+	
+	<!-- Custom CSS -->
+	<style>
+	{CustomCSS}
+	</style>
+
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+
+<div id="header">
+<div class="container">
+
+	<h1 class="title"><a href="{BlogURL}">{Title}</a></h1>
+
+	<ul class="feed list-inline">
+		{block:IfTumblrUsername}
+			<li><a href="http://www.tumblr.com/follow/{text:Tumblr Username}"><i class="fa fa-plus-square"></i> Follow on Tumblr</a></li>
+		{block:IfTumblrUsername}
+		<li><a href="{RSS}"><i class="fa fa-rss"></i> RSS Feed</a></li>
+	</ul>
+
+</div>
+</div>
+<!-- /#header -->
+
+<div id="contents">
+<div class="container">
+	
+<div id="main" class="col-xs-9">
+
+{block:TagPage}
+	<ol class="breadcrumb">
+	  <li><a href="{BlogURL}">Home</a></li>
+	  <li class="active">Posts tagged "{Tag}"</li>
+	</ol>
+{/block:TagPage}
+
+{block:Posts}
+<article>
+
+	{block:Photo}
+		<div class="post photo">
+			{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" />{LinkCloseTag}
+			{block:Caption}
+				<div class="caption">{Caption}</div>
+			{/block:Caption}
+		</div>
+	{/block:Photo}
+
+	{block:Panorama}
+	 {LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+		{block:Caption}
+				<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:Panorama}
+
+	{block:Photoset}
+		{block:Photos}
+			<img src="{PhotoURL-500}" width="{PhotoWidth-500}"height="{PhotoHeight-500}" />
+			
+			{block:Caption}
+					<div class="caption">{Caption}</div>
+			{/block:Caption}
+			
+			{block:Exif}
+					<ul>...</ul>
+			{/block:Exif}
+		{/block:Photos}
+		
+		{block:Caption}
+				<div class="caption">{Caption}</div>
+		{/block:Caption}
+	{/block:Photoset}
+
+	
+	{block:Video}
+		<div class="post video">
+			{Video-500}
+			{block:Caption}
+				<div class="caption">{Caption}</div>
+			{/block:Caption}
+		</div>
+	{/block:Video}
+
+	 
+	{block:Text}
+		<div class="post text">
+			{block:Title}
+				<h2 class="title"><a href="{Permalink}">{Title}</a></h2>
+			{/block:Title}
+			{block:Body}
+				<div class="body">{Body}</div>
+			{/block:Body}
+		</div>
+	{/block:Text}
+
+	 
+	{block:Link}
+		<div class="post link">
+			<a href="{URL}" {Target}>{Name} &raquo;</a>
+			{block:Description}
+				<div class="description">{Description}</div>
+			{/block:Description}
+		</div>
+	{/block:Link}
+
+
+	{block:Quote}
+		<div class="post quote {Length}">
+			<blockquote>
+				{Quote}
+			</blockquote>
+			{block:Source}
+				<div class="source">{Source}</div>
+			{/block:Source}
+		</div>
+	{/block:Quote}
+	
+
+	{block:Audio}
+		<div class="post audio">
+			{block:IfShowAlbumArtOnAudioPosts}
+				{block:AlbumArt}
+					<div class="album_art">
+						<img src="{AlbumArtURL}" alt="{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}" />
+					</div>
+				{/block:AlbumArt}
+			{/block:IfShowAlbumArtOnAudioPosts}
+			
+			<div class="player">{AudioPlayerWhite}</div>
+			
+			<div class="meta">
+				{PlayCountWithLabel}
+				{block:ExternalAudio}
+					<span class="download_external_audio"> &bull; <a href="{ExternalAudioURL}">{lang:Download}</a></span>
+				{/block:ExternalAudio}
+			</div>
+
+			{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+		</div>
+	{/block:Audio}
+	 
+	
+	{block:Chat}
+		<div class="post chat">
+			{block:Title}<h2 class="title">{Title}</h2>{/block:Title}
+			<div class="lines">
+				{block:Lines}
+					<div class="line {Alt}">{block:Label}<strong>{Label}</strong>{/block:Label} {Line}</div>
+				{/block:Lines}
+			</div>
+		</div>
+	{/block:Chat}
+		 
+	
+	{block:Answer}
+		<div class="post question-answer">
+			<div class="question">{Question}</div>
+			<div class="asker"><img src="{AskerPortraitURL-24}" />{Asker}</div>
+			<div class="answer">{Answer}</div>
+		</div>
+	{block:Answer}
+
+	<div class="article_footer">
+		<ul class="list-inline">
+			{block:IfPostTimeStamp}
+				{block:Date}
+					<li><i class="fa fa-clock-o"></i> {TimeAgo}</li>
+				{/block:Date}
+			{/block:IfPostTimeStamp}
+			
+			{block:IfPostNotesCount}
+				{block:NoteCount}
+					<li><a href="{Permalink}"><i class="fa fa-file-text-o"></i> {NoteCountWithLabel}</a></li>
+				{/block:NoteCount}
+			{block:IfPostNotesCount}
+			
+			{block:IfPostTags}
+				{block:HasTags}
+					<i class="fa fa-tag"></i> 
+					{block:Tags}
+						<li><a href="{TagURL}">{Tag}</a></li>
+					{/block:Tags}
+				{/block:HasTags}
+			{block:IfPostTags}
+
+			{block:IfPostLikeButton}
+				<li class="icon pull-right">{LikeButton}</li>
+			{/block:IfPostLikeButton}
+			{block:IfPostReblogButton}
+				<li class="icon pull-right">{ReblogButton}</li>
+			{/block:IfPostReblogButton}
+		</ul>
+	</div>
+	<!-- /article_footer -->
+
+	{block:PostNotes}
+	<section>
+		{PostNotes-16}
+	</section>
+	{/block:PostNotes}
+
+</article>
+{/block:Posts}
+
+{block:Pagination}{block:PreviousPage}
+		<a href="{PreviousPage}">Previous</a>
+{/block:PreviousPage}{block:JumpPagination length="5"}{block:CurrentPage}
+				<span class="current_page">{PageNumber}</span>
+		{/block:CurrentPage}{block:JumpPage}
+				<a class="jump_page" href="{URL}">{PageNumber}</a>
+		{/block:JumpPage}{/block:JumpPagination}{block:NextPage}
+		<a href="{NextPage}">Next</a>
+{/block:NextPage}{/block:Pagination}
+
+</div>
+<!-- /#main -->
+
+<div id="side" class="col-xs-3">
+
+	<aside class="avatar">
+		<img src="{PortraitURL-128}" alt="{Title}">
+		{block:Description}
+			<p>{Description}</p>
+		{/block:Description}
+	</aside>
+	
+	<aside class="pages">
+		<h5 class="title">NAVIGATE</h5>
+		<ul class="list-unstyled">
+			<li><a href="{BlogURL}"><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="/archive"><i class="fa fa-folder-open"></i>Archive</a></li>
+		{block:HasPages}
+			{block:Pages}
+				<li><a href="{URL}"><i class="fa fa-file"></i>{Label}</a></li>
+			{/block:Pages}
+		{/block:HasPages}
+		</ul>
+	</aside>
+	<!-- /pages -->
+	{block:IfTumblrUsername}
+	<aside class="tags">
+		<h5 class="title">TAGS</h5>
+		<!-- Tumblr Tag Widget -> post-theory.com -->
+		<div id="tagCloud"></div><script type="text/javascript" src="http://post-theory.com/public/tagcloud/{text:Tumblr Username}?tn={Name}&sort=time&mincount=2&scale=false&html=ul" async="async"></script>
+	</aside>
+	{/block:IfTumblrUsername}
+
+</div>
+<!-- /#side -->
+
+</div>
+<!-- /.container -->
+</div>
+<!-- /#contents -->
+
+<div id="footer" class="text-center">
+<div class="container">
+	copyright {CopyrightYears} {Title}
+	<div class="pull-right">
+		<a href="https://github.com/takeshi-du/kohnan-tumblr-theme" target="_blank">Kohnan</a> designed by <a href="http://designup.jp/" target="_blank">Designup.jp</a>
+	</div>
+</div>
+</div>
+<!-- /#footer -->
+
+<!-- bootstrap.min.js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</body>
+</html>
